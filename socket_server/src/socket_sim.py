@@ -29,7 +29,7 @@ def clientthread(conn, addr):
         try:
 
             message = conn.recv(2048)
-            velocity_publisher = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
+            velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
             vel_msg = Twist()
             vel_msg.linear.x = 0
             vel_msg.linear.y =  0
