@@ -32,29 +32,43 @@ def clientthread(conn, addr):
                 """prints the message and address of the
                 user who just sent the message on the server
                 terminal"""
-                print(str(message.decode('utf-8')))
-                
+                print(str(message.decode('utf-8')))               
                 if str(message.decode('utf-8')) == "f":
-                    rpmr = 17.0
-                    rpml = 17.0
+                    rpmFR = 40.0
+                    rpmFL = 40.0
+                    rpmBR = 40.0
+                    rpmBL = 40.0  
                 elif str(message.decode('utf-8')) == "b":
-                    rpmr = -17.0
-                    rpml = -17.0
+                    rpmFR = -40.0
+                    rpmFL = -40.0
+                    rpmBR = -40.0
+                    rpmBL = -40.0
                 elif str(message.decode('utf-8')) == "l":
-                    rpmr = 17.0
-                    rpml = -17.0
+                    rpmFR = 0.0
+                    rpmFL = 0.0
+                    rpmBR = 0.0
+                    rpmBL = 0.0
                 elif str(message.decode('utf-8')) == "r":
-                    rpmr = -17.0
-                    rpml = 17.0
+                    rpmFR = 0.0
+                    rpmFL = 0.0
+                    rpmBR = 0.0
+                    rpmBL = 0.0
                 elif str(message.decode('utf-8')) == "s":
-                    rpml = 0.0
-                    rpmr = 0.0
-                
-                pub_rpml = rospy.Publisher('rpml_', Float64, queue_size=10)
-                pub_rpmr = rospy.Publisher('rpmr_', Float64, queue_size=10)
-                
-                pub_rpml.publish(rpml)
-                pub_rpmr.publish(rpmr)
+                    rpmFR = 0.0
+                    rpmFL = 0.0
+                    rpmBR = 0.0
+                    rpmBL = 0.0
+               
+                pub_rpmFL = rospy.Publisher('rpmFL_', Float64, queue_size=10)
+                pub_rpmFR = rospy.Publisher('rpmFR_', Float64, queue_size=10)
+                pub_rpmBL = rospy.Publisher('rpmBL_', Float64, queue_size=10)
+                pub_rpmBR = rospy.Publisher('rpmBR_', Float64, queue_size=10)
+               
+                pub_rpmFL.publish(rpmFL)
+                pub_rpmFR.publish(rpmFR)
+                pub_rpmBL.publish(rpmBL)
+                pub_rpmBR.publish(rpmBR)
+
 
 
             else:
